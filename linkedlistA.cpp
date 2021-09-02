@@ -13,6 +13,8 @@ void traverse_linked_list(struct node *head);
 
 void insert_node_at_end(struct node *head, int data);
 
+struct node *insert_node_at_end_better_version(struct node *lastPtr, int data);
+
 int main()
 {
     struct node *head = (struct node *)malloc(sizeof(struct node));
@@ -37,9 +39,13 @@ int main()
     // cout << (*(*head).next).data << endl;
     // cout << head->next->next->data << endl;
     // cout << (*(*(*head).next).next).data << endl;
-    insert_node_at_end(head, 40);
-    insert_node_at_end(head, 50);
-    insert_node_at_end(head, 60);
+    // insert_node_at_end(head, 40);
+    // insert_node_at_end(head, 50);
+    // insert_node_at_end(head, 60);
+
+    current = insert_node_at_end_better_version(current, 40);
+    current = insert_node_at_end_better_version(current, 50);
+    current = insert_node_at_end_better_version(current, 60);
     cout << "Number of nodes: " << count_nodes(head) << endl;
     traverse_linked_list(head);
 
@@ -95,4 +101,15 @@ void insert_node_at_end(struct node *head, int data)
     }
 
     temp->next = new_node_pointer;
+}
+
+struct node *insert_node_at_end_better_version(struct node *lastPtr, int data)
+{
+    struct node *new_node = (struct node *)malloc(sizeof(struct node));
+
+    new_node->data = data;
+    new_node->next = NULL;
+
+    lastPtr->next = new_node;
+    return new_node;
 }
