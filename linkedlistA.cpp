@@ -17,6 +17,7 @@ void insert_at_certion_position(struct node *head, int data, int position);
 struct node *delete_first_node(struct node *head);
 void delete_last_node(struct node *head);
 void delete_note_from_certain_position(struct node **ptrToHead, int position);
+struct node *delete_whole_linked_list(struct node *head);
 
 int main()
 {
@@ -35,6 +36,7 @@ int main()
     current->next = NULL;
 
     head->next->next = current;
+    // (*(*head).next).next = current;
 
     // cout << head->data << endl;
     // cout << (*head).data << endl;
@@ -62,6 +64,7 @@ int main()
     // delete_note_from_certain_position(&head, 2);
     // delete_note_from_certain_position(&head, 3);
     // delete_note_from_certain_position(&head, 5);
+    // head = delete_whole_linked_list(head);
     cout << "Number of nodes: " << count_nodes(head) << endl;
     traverse_linked_list(head);
 
@@ -225,4 +228,17 @@ void delete_note_from_certain_position(struct node **ptrToHead, int position)
         free(current);
         current = NULL;
     }
+}
+
+struct node *delete_whole_linked_list(struct node *head)
+{
+    struct node *temp = head;
+    while (temp->next != NULL)
+    {
+        free(head);
+        temp = temp->next;
+        head = temp;
+    }
+    head = NULL;
+    return head;
 }
