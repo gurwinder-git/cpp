@@ -77,7 +77,6 @@ struct node *swapPairs(struct node *head)
         {
             previous_ptr->next = next_ptr->next;
         }
-
         else
         {
             previous_ptr->next = next_ptr;
