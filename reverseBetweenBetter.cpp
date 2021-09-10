@@ -81,14 +81,10 @@ struct node *reverseBetween(node *head, int left, int right)
     {
 
         if (counter + 1 == left)
-        {
             partion_1_tail = current_traversal;
-        }
 
         if (counter == left)
-        {
             reversed_list_tail = current_traversal;
-        }
 
         if (counter == right)
         {
@@ -104,11 +100,8 @@ struct node *reverseBetween(node *head, int left, int right)
             current = next_to_current;
         }
         else
-        {
             current = current->next;
-        }
 
-        // current_traversal = next_to_current;
         current_traversal = current;
         counter++;
     }
