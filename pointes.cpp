@@ -35,17 +35,21 @@ int main()
     int arr[] = {112, 234, 365, 476, 589};
 
     int *pointer_of_array = arr;
+    // also do like this
+    pointer_of_array[0] = 9;
+    // also do like this
+    *(pointer_of_array + 0) = 0;
 
-    // cout << "array output with pointers: " << endl;
+    cout << "array output with pointers: " << endl;
 
-    // for (int i = 0; i < 6; i++)
-    // {
-    //     cout << "address of "
-    //          << "arr[" << i << "] " << pointer_of_array + i << endl;
-    //     cout << "value of "
-    //          << "arr[" << i << "] " << *(pointer_of_array + i) << endl
-    //          << endl;
-    // }
+    for (int i = 0; i < 6; i++)
+    {
+        cout << "address of "
+             << "arr[" << i << "] " << pointer_of_array + i << endl;
+        cout << "value of "
+             << "arr[" << i << "] " << *(pointer_of_array + i) << endl
+             << endl;
+    }
 
     return 0;
 }

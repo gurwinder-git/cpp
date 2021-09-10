@@ -50,9 +50,7 @@ void display_linked_list(struct node *head)
 
 struct node *reverse_linked_list(struct node *head)
 {
-    struct node *prev_to_head, *next_to_head;
-    prev_to_head = NULL;
-    next_to_head = NULL;
+    struct node *prev_to_head = NULL, *next_to_head = NULL;
 
     while (head != NULL)
     {

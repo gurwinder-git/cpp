@@ -2,6 +2,12 @@
 
 using namespace std;
 
+struct node
+{
+    int a;
+    int b;
+};
+
 // void fun(int **ptr)
 // {
 //     cout << *ptr << endl;
@@ -38,3 +44,69 @@ using namespace std;
 
 //     return 0;
 // }
+
+// int main()
+// {
+//     struct node ns[] = {{12, 32}, {45, 56}};
+//     struct node *ptr = ns;
+//     int *p = &(ptr->a);
+//     *p = 2352352;
+//     cout << ptr->a << endl;
+//     cout << ptr->b << endl;
+//     ptr++;
+//     cout << ptr->a << endl;
+//     cout << ptr->b << endl;
+
+//     return 0;
+// }
+
+// int main()
+// {
+//     int *p = (int *)malloc(4);
+//     *p = 104;
+//     *(p + 1) = 232;
+//     cout << *p << endl;
+//     cout << *++p << endl;
+//     return 0;
+// }
+
+// int main()
+// {
+//     struct node *p = (struct node *)malloc(1);
+//     p->a = 10;
+//     p->b = 34;
+
+//     (*(p + 1)).a = 23;
+//     (p + 1)->b = 265;
+//     cout << p->a << endl;
+//     cout << p->b << endl;
+//     cout << (p + 1)->a << endl;
+//     cout << (p + 1)->b << endl;
+
+//     return 0;
+// }
+
+int main()
+{
+    int *arr = new int[2];
+    *(arr) = 12;
+    *(arr + 1) = 45;
+    arr[2] = 44;
+    cout << *arr << endl;
+    cout << *(arr + 1) << endl;
+    cout << *(arr + 2) << endl;
+
+    int arr2[2] = {12, 334};
+    arr2[0] = 0;
+    arr2[1] = 0;
+    arr2[2] = 0;
+    arr2[3] = 0;
+    arr2[4] = 0;
+    cout << arr2[0] << endl;
+    cout << arr2[1] << endl;
+    cout << arr2[2] << endl;
+    cout << arr2[3] << endl;
+    cout << arr2[4] << endl;
+
+    return 0;
+}
