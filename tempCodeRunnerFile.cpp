@@ -1,4 +1,2 @@
-bool *hasCycle(struct node *head)
-// {
-
-// }
+>data << "  ";
+    // cout << tail->data << "  ";
