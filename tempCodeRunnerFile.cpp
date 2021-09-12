@@ -1,2 +1,2 @@
->data << "  ";
-    // cout << tail->data << "  ";
+B->next == tempA)
+        return tempA;
