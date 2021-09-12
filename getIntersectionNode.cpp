@@ -70,6 +70,5 @@ node *getIntersectionNode(node *headA, node *headB)
         else
             tempB = tempB->next;
     }
-
     return tempA;
 }
