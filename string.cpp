@@ -33,5 +33,5 @@ int main()
     string myString = {'G', 'u', 'r', 'u'};
     cout << myString;
 
-        return 0;
+    return 0;
 }

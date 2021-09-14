@@ -86,27 +86,55 @@ struct node
 //     return 0;
 // }
 
+// int main()
+// {
+//     int *arr = new int[2];
+//     *(arr) = 12;
+//     *(arr + 1) = 45;
+//     arr[2] = 44;
+//     cout << *arr << endl;
+//     cout << *(arr + 1) << endl;
+//     cout << *(arr + 2) << endl;
+
+//     int arr2[2] = {12, 334};
+//     arr2[0] = 0;
+//     arr2[1] = 0;
+//     arr2[2] = 0;
+//     arr2[3] = 0;
+//     arr2[4] = 0;
+//     cout << arr2[0] << endl;
+//     cout << arr2[1] << endl;
+//     cout << arr2[2] << endl;
+//     cout << arr2[3] << endl;
+//     cout << arr2[4] << endl;
+
+//     return 0;
+// }
+
 int main()
 {
-    int *arr = new int[2];
-    *(arr) = 12;
-    *(arr + 1) = 45;
-    arr[2] = 44;
-    cout << *arr << endl;
-    cout << *(arr + 1) << endl;
-    cout << *(arr + 2) << endl;
+    // string s1({'a', 'b', 'b', 'a'}); //static
+    string s1 = {'a', 'b', 'b', 'a'};              //static
+    string *s2 = new string({'a', 'b', 'b', 'a'}); //dynamic
+    cout << s2->length() << endl;
+    // getline(cin, s1);
+    s1[1] = 'e';
 
-    int arr2[2] = {12, 334};
-    arr2[0] = 0;
-    arr2[1] = 0;
-    arr2[2] = 0;
-    arr2[3] = 0;
-    arr2[4] = 0;
-    cout << arr2[0] << endl;
-    cout << arr2[1] << endl;
-    cout << arr2[2] << endl;
-    cout << arr2[3] << endl;
-    cout << arr2[4] << endl;
+    char *ptr = new char[10]{'d', 'f', 't', 'i', '\0'};
 
+    int i = 0;
+    while (ptr[i])
+    {
+        cout << ptr[i];
+        i++;
+    }
+    // char *ptr1 = "df";
+    ptr[0] = 'y';
+
+    cout << ptr[0] << endl;
+    cout << *(ptr + 1) << endl;
+    cout << *(ptr) << endl;
+    cout << ptr << endl;
+    int *p = new int(3);
     return 0;
 }
