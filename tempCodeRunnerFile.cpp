@@ -1,3 +1,1 @@
-
-        // cout << m << endl;
-        // cout << sortedVector[n] << endl;
+(right - left) + 1
