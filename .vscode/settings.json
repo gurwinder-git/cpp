@@ -39,7 +39,9 @@
         "algorithm": "cpp",
         "vector": "cpp",
         "deque": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "list": "cpp",
+        "iterator": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

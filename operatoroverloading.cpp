@@ -53,6 +53,11 @@ public:
         name = n;
         totalsubscriber = ts;
     }
+
+    bool operator==(const youtube &obj) const
+    {
+        return name == obj.name;
+    }
 };
 
 class myCollection
@@ -60,11 +65,21 @@ class myCollection
 public:
     list<youtube> collect;
 
+    //below is global version
     void operator+=(youtube &obj)
     {
-        collect.push_back(obj);
+        this->collect.push_back(obj);
+    }
+
+    void operator-=(youtube &obj)
+    {
+        this->collect.remove(obj);
     }
 };
+// void operator+=(myCollection &mc, youtube &yt)
+// {
+//     mc.collect.push_back(yt);
+// }
 
 ostream &operator<<(ostream &coutObj, youtube &ytObj)
 {
@@ -72,15 +87,31 @@ ostream &operator<<(ostream &coutObj, youtube &ytObj)
     return coutObj;
 }
 
+ostream &operator<<(ostream &COUT, myCollection &mcol)
+{
+    for (youtube item : mcol.collect)
+    {
+        COUT << item.name << endl;
+        COUT << item.totalsubscriber << endl
+             << endl;
+    }
+
+    return COUT;
+}
+
 int main()
 {
     // youtube yt1 = youtube("GUrwinder", 100088);
     youtube yt1("GUrwinder", 100088);
     youtube yt2("inder", 88);
-    cout << yt1 << yt2;
-    operator<<(cout, yt1) << (cout, yt2);
+    // cout << yt1 << yt2;
+    // operator<<(cout, yt1) << (cout, yt2);
     myCollection coll1;
     coll1 += yt1;
+    coll1 += yt2;
+    coll1 -= yt2;
+
+    cout << coll1;
 
     return 0;
 }

@@ -1,2 +1,1 @@
-B->next == tempA)
-        return tempA;
+index + 1
