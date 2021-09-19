@@ -7,7 +7,7 @@ bool isPalindrome(int, int, string &s);
 int main()
 {
     // string s = {'a', 'b', 'c', 'c', 'b', 'a', 'a', 'b', 'a'};
-    string s = "abb";
+    string s = "abcaaabaaa";
     s = longestPalindrome(s);
 
     int i = 0;
@@ -28,25 +28,18 @@ string longestPalindrome(string s)
 
     while (left < stringLenght)
     {
-        while (right > left)
+        while ((right - left) >= resultString.length())
         {
             if (isPalindrome(left, right, s))
-            {
                 if (resultString.length() < ((right - left) + 1))
-                {
-                    //copy the string
                     resultString = s.substr(left, ((right - left) + 1));
-                }
-            }
+
             right--;
         }
-        if (resultString.length() == stringLenght)
-            return s;
 
         left++;
         right = stringLenght - 1;
     }
-
     return resultString;
 }
 

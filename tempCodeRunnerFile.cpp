@@ -1,1 +1,3 @@
-(right - left) + 1
+ < elementsIndexes.size(); i++)
+        cout << elementsIndexes[i] << " ";
+    cout << endl;
