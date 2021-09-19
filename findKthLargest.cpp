@@ -25,7 +25,6 @@ int findKthLargest(vector<int> &nums, int k)
         int i = 0;
         while (i < nums.size())
         {
-            // cout << count(elementsIndexes.begin(), elementsIndexes.end(), i) << "  ";
             if (count(elementsIndexes.begin(), elementsIndexes.end(), i))
             {
                 i++;

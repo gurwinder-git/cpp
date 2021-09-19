@@ -21,7 +21,10 @@ int findKthLargest(vector<int> &nums, int k)
         maxHeap.push(nums[i]);
 
     while (k > 1)
+    {
         maxHeap.pop();
+        k--;
+    }
 
     return maxHeap.top();
 }
