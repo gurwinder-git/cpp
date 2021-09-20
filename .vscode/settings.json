@@ -41,7 +41,10 @@
         "deque": "cpp",
         "stack": "cpp",
         "list": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "queue": "cpp",
+        "set": "cpp",
+        "xtree": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

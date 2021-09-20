@@ -1,3 +1,2 @@
- < elementsIndexes.size(); i++)
-        cout << elementsIndexes[i] << " ";
-    cout << endl;
+= 0; i < nums.size(); i++)
+    //     maxHeap.push(nums[i]);
