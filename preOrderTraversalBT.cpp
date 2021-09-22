@@ -13,7 +13,7 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-vector<int> inOrder(TreeNode *root);
+vector<int> preOrder(TreeNode *root);
 
 int main()
 {
@@ -26,7 +26,7 @@ int main()
     root->right->left = new TreeNode(8);
     root->right->right = new TreeNode(9);
 
-    vector<int> res = inOrder(root);
+    vector<int> res = preOrder(root);
 
     vector<int>::iterator it = res.begin();
     for (it; it != res.end(); it++)
@@ -44,12 +44,12 @@ int main()
 //     if (nodePtr == NULL)
 //         return;
 
-//     traverse(nodePtr->left, res);
 //     res.push_back(nodePtr->val);
+//     traverse(nodePtr->left, res);
 //     traverse(nodePtr->right, res);
 // }
 
-// vector<int> inOrder(TreeNode *root)
+// vector<int> preOrder(TreeNode *root)
 // {
 //     vector<int> res;
 //     traverse(root, res);
@@ -58,7 +58,7 @@ int main()
 
 //iterative
 
-vector<int> inOrder(TreeNode *root)
+vector<int> preOrder(TreeNode *root)
 {
     stack<TreeNode *> helperStack;
     vector<int> res;
@@ -67,6 +67,7 @@ vector<int> inOrder(TreeNode *root)
     {
         if (root)
         {
+            res.push_back(root->val);
             helperStack.push(root);
             root = root->left;
         }
@@ -74,9 +75,9 @@ vector<int> inOrder(TreeNode *root)
         {
             root = helperStack.top();
             helperStack.pop();
-            res.push_back(root->val);
             root = root->right;
         }
     }
+
     return res;
 }
