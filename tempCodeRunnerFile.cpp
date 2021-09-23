@@ -1,2 +1,2 @@
-| r && !l)
-        //     return false;
+!res)
+        return 0;
