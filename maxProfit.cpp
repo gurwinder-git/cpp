@@ -8,6 +8,7 @@ int main()
 {
     vector<int> prices = {7, 1, 2, 3, 4, 6, 3};
     cout << maxProfit(prices);
+    return 0;
 }
 int maxProfit(vector<int> &prices)
 {
