@@ -8,6 +8,7 @@ int main()
 {
     vector<int> nums = {-1, -10, 3, 4, -1};
     cout << maximunGap(nums);
+    return 0;
 }
 int maximunGap(vector<int> &nums)
 {

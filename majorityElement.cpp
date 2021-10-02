@@ -14,6 +14,7 @@ int main()
 
     return 0;
 }
+
 vector<int> majorityElements(vector<int> &nums)
 {
     unordered_map<int, int> frequencyOfElements;
