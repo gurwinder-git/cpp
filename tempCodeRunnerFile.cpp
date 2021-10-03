@@ -1,4 +1,1 @@
- (currMaxPro > maxPro)
-            {
-                maxPro = currMaxPro;
-            }
+isIsomorphic(s, t) ? "true" : "false"
