@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-bool spiralMatrix(vector<vector<int>> &matrix, int target);
+bool searchTarget(vector<vector<int>> &matrix, int target);
 int main()
 {
 
@@ -10,12 +10,12 @@ int main()
                                {4, 5, 6},
                                {7, 8, 9}};
 
-    cout << spiralMatrix(mat, 6);
+    cout << searchTarget(mat, 6);
 
     return 0;
 }
 
-bool spiralMatrix(vector<vector<int>> &matrix, int target)
+bool searchTarget(vector<vector<int>> &matrix, int target)
 {
 
     int m = matrix.size();
