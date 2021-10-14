@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
+#include <unordered_set>
 
 using namespace std;
 
@@ -13,38 +13,14 @@ int main()
     return 0;
 }
 
-// void getIndex(vector<int> v, int K)
-// {
-//     auto it = find(v.begin(), v.end(), K);
-
-//     // If element was found
-//     if (it != v.end())
-//     {
-//         int index = it - v.begin();
-//         cout << index << endl;
-//     }
-// }
-
 string removeDuplicateLetters(string s)
 {
+    unordered_set<char> st;
+    for (char c : s)
+        st.insert(c);
+
     string res;
-    string::iterator it = s.begin();
-    while (it != s.end())
-    {
-        string::iterator indexOfCharIfExit = find(res.begin(), res.end(), *it);
-        //if not found
-        if (indexOfCharIfExit == res.end())
-        {
-            res.push_back(*it);
-        }
-        //if found
-        else
-        {
-            int index = indexOfCharIfExit - res.begin();
-        }
-
-        it++;
-    }
-
+    for (int i = 0; i < st.size(); i++)
+        cout << *st.begin(i);
     return res;
 }

@@ -1,1 +1,1 @@
-% rows
+board[0].size() - 1
