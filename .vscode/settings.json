@@ -44,7 +44,10 @@
         "iterator": "cpp",
         "queue": "cpp",
         "set": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "xhash": "cpp"
     },
     "C_Cpp.errorSquiggles": "Enabled"
 }

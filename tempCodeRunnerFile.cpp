@@ -1,1 +1,2 @@
-board[0].size() - 1
+top().first << endl;
+    pq.pop();
