@@ -1,2 +1,1 @@
-top().first << endl;
-    pq.pop();
+1 + lcs(s1, i + 1, s2, j + 1)
