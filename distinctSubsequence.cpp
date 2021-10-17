@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <vector>
 
 using namespace std;
@@ -9,7 +9,7 @@ int distinctSubsequences(string s);
 
 int main()
 {
-    cout << distinctSubsequences("abcdab");
+    cout << distinctSubsequences("abcdd");
     return 0;
 }
 int distinctSubsequences(string s)
@@ -18,14 +18,12 @@ int distinctSubsequences(string s)
     int n = s.size();
     vector<int> dp(n + 1);
     dp[0] = 1;
-    cout << dp.size() << endl;
 
-    map<char, int> helperMap;
+    unordered_map<char, int> helperMap;
 
     for (int i = 1; i < dp.size(); i++)
     {
         dp[i] = (2 * dp[i - 1]) % mod;
-        cout << dp[i] << endl;
         char c = s[i - 1];
         if (helperMap[c] > 0)
         {
