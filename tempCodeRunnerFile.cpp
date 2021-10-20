@@ -1,1 +1,1 @@
-stk.size() + 1
+first[1] < second[0]
