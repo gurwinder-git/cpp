@@ -1,1 +1,2 @@
-first[1] < second[0]
+++)
+    //     cout << dp[j] << "//";
