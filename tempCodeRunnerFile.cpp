@@ -1,2 +1,1 @@
-++)
-    //     cout << dp[j] << "//";
+min(dfs(matrix, y, x + 1), dfs(matrix, y + 1, x)) + matrix[y][x]
