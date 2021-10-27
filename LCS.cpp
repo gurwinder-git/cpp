@@ -8,8 +8,8 @@ using namespace std;
 int longestCommonSubsequence(string s1, string s2);
 int main()
 {
-    string s1 = "abckjvsnvkjnkjdbkjsnkjkjlkdvmpemvpremrpbnkjfd";
-    string s2 = "poeorjbmlkerlvmlmlvmlmelkrmklvmlkerklmvlk";
+    string s1 = "abcd";
+    string s2 = "aaaaad";
     cout << longestCommonSubsequence(s2, s2);
     return 0;
 }
@@ -35,10 +35,7 @@ int main()
 
 int longestCommonSubsequence(string s1, string s2)
 {
-    if (s1.size() < s2.size())
-        return longestCommonSubsequence(s2, s1);
-
-    vector<vector<int>> matrix(s1.size() + 1, vector<int>(s1.size() + 1));
+    vector<vector<int>> matrix(s1.size() + 1, vector<int>(s2.size() + 1, 0));
 
     for (int y = 1; y <= s1.size(); y++)
         for (int x = 1; x <= s2.size(); x++)
