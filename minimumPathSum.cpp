@@ -14,18 +14,50 @@ int main()
     return 0;
 }
 
-int dfs(vector<vector<int>> &grid, int y, int x)
+// using memorization
+
+// int dfs(vector<vector<int>> &grid, int y, int x, vector<vector<int>> &dp)
+// {
+//     if (y == grid.size() - 1 && x == grid.size())
+//         return grid[y][x];
+
+//     if (y >= grid.size() || x >= grid[0].size())
+//         return INT_MAX;
+
+//     if (dp[y][x] != -1)
+//         return dp[y][x];
+
+//     dp[y][x] = min(dfs(grid, y, x + 1, dp), dfs(grid, y + 1, x, dp)) + grid[y][x];
+//     return dp[y][x];
+// }
+
+// int minCostPathSum(vector<vector<int>> &matrix)
+// {
+//     vector<vector<int>> dp(matrix.size(), vector<int>(matrix[0].size(), -1));
+//     return dfs(matrix, 0, 0, dp);
+// }
+
+// using dp
+
+int minCostPathSum(vector<vector<int>> &grid)
 {
-    if (y == grid.size() - 1 && x == grid.size())
-        return grid[y][x];
+    int rows = grid.size() - 1;
+    int cols = grid[0].size() - 1;
 
-    if (y >= grid.size() || x >= grid[0].size())
-        return INT_MAX;
+    vector<vector<int>> dp(rows + 1, vector<int>(cols + 1));
+    dp[rows][cols] = grid[rows][cols];
 
-    return min(dfs(grid, y, x + 1), dfs(grid, y + 1, x)) + grid[y][x];
-}
+    for (int x = cols - 1; x >= 0; x--)
+        dp[rows][x] = dp[rows][x + 1] + grid[rows][x];
 
-int minCostPathSum(vector<vector<int>> &matrix)
-{
-    return dfs(matrix, 0, 0);
+    for (int y = rows - 1; y >= 0; y--)
+        for (int x = cols; x >= 0; x--)
+        {
+            if (x == cols)
+                dp[y][x] = dp[y + 1][x] + grid[y][x];
+            else
+                dp[y][x] = min(dp[y + 1][x], dp[y][x + 1]) + grid[y][x];
+        }
+
+    return dp[0][0];
 }
