@@ -29,7 +29,7 @@ int maxProfit(vector<int> &prices)
             assumeToBuyAt = prices[i];
         }
         else // if sell - buy (profit) 0 or less than 0, then find the min between buy and sell
-            assumeToBuyAt = min(assumeToBuyAt, prices[i]);
+            assumeToBuyAt = prices[i];
     }
     return maxProfit;
 }

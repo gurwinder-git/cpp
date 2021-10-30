@@ -17,9 +17,10 @@ int maxProfit(vector<int> &prices)
 
     for (int i = 1; i < prices.size(); i++)
     {
+        // sell - buy (profit) > maxProfit than Assign it to maxProfit
         if (prices[i] - minPrice > maxProfit)
             maxProfit = prices[i] - minPrice;
-
+        // find minPrice at each point
         minPrice = min(minPrice, prices[i]);
     }
     return maxProfit;
