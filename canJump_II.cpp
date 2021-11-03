@@ -65,37 +65,59 @@ int main()
 
 // greedy method
 
+// int canJumpII(vector<int> &nums)
+// {
+//     int minJumps = 0;
+
+//     int i = 0;
+
+//     while (i < nums.size() - 1)
+//     {
+//         int checkUpTo = i + nums[i];
+
+//         if (checkUpTo >= nums.size() - 1)
+//             return minJumps + 1;
+
+//         i++;
+
+//         int goodIndex = checkUpTo;
+//         int sum = nums[checkUpTo] + checkUpTo;
+
+//         while (i < checkUpTo)
+//         {
+//             if (nums[i] + i >= sum)
+//             {
+//                 sum = nums[i] + i;
+//                 goodIndex = i;
+//             }
+
+//             i++;
+//         }
+//         minJumps++;
+//         i = goodIndex;
+//     }
+
+//     return minJumps;
+// }
+
+// another greedy
+
 int canJumpII(vector<int> &nums)
 {
-    int minJumps = 0;
+    int currMaxReach = 0;
+    int bestOf = currMaxReach;
+    int jumps = 0;
 
-    int i = 0;
-
-    while (i < nums.size() - 1)
+    for (int i = 0; i < nums.size() - 1; i++)
     {
-        int checkUpTo = i + nums[i];
+        currMaxReach = max(currMaxReach, i + nums[i]);
 
-        if (checkUpTo >= nums.size() - 1)
-            return minJumps + 1;
-
-        i = i + 1;
-
-        int goodIndex = checkUpTo;
-        int sum = nums[checkUpTo] + checkUpTo;
-
-        while (i < checkUpTo)
+        if (i == bestOf)
         {
-            if (nums[i] + i >= sum)
-            {
-                sum = nums[i] + i;
-                goodIndex = i;
-            }
-
-            i++;
+            jumps++;
+            bestOf = currMaxReach;
         }
-        minJumps++;
-        i = goodIndex;
     }
 
-    return minJumps;
+    return jumps;
 }
