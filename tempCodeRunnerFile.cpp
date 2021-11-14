@@ -1,2 +1,6 @@
- >= 0 && grid[y - 1][x] == 1 && visted[y - 1][x] == false)
-    //     markVisite
+
+    // mp.insert(2, 2);
+    // mp.insert(4, 3);
+    // mp.insert(6, 4);
+    // mp.insert(7, 5);
+    // mp.insert(9, 6);
