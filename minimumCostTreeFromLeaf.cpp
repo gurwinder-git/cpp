@@ -16,8 +16,12 @@ int main()
     return 0;
 }
 
-pair<int, int> solve(vector<int> &arr, int start, int end)
+pair<int, int> solve(vector<int> &arr, int start, int end, vector<vector<pair<int, int>>> &dp)
 {
+
+    if (dp[start][end].first != -1)
+        return dp[start][end];
+
     if (start == end)
         return pair<int, int>(0, arr[start]);
 
@@ -26,16 +30,20 @@ pair<int, int> solve(vector<int> &arr, int start, int end)
 
     for (int i = start; i < end; i++)
     {
-        pair<int, int> left = solve(arr, start, i);
-        pair<int, int> right = solve(arr, i + 1, end);
+        pair<int, int> left = solve(arr, start, i, dp);
+        pair<int, int> right = solve(arr, i + 1, end, dp);
 
         minProduct = min(minProduct, left.first + right.first + left.second * right.second); // first == product
         maxLeaf = max(left.second, right.second);
     }
 
+    dp[start][end] = pair<int, int>(minProduct, maxLeaf);
     return {minProduct, maxLeaf};
 }
+
 int minCostTree(vector<int> &arr)
 {
-    return solve(arr, 0, arr.size() - 1).first;
+    pair<int, int> p = {-1, -1};
+    vector<vector<pair<int, int>>> dp(arr.size(), vector<pair<int, int>>(arr.size(), p));
+    return solve(arr, 0, arr.size() - 1, dp).first;
 }
