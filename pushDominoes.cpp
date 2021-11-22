@@ -47,9 +47,7 @@ string pushDominoes(string dominoes)
         else if (dominoes[start] == 'L' && dominoes[end] == 'L')
             updateString(dominoes, start + 1, end - 1, 'L');
         else // R....R
-        {
             updateString(dominoes, start + 1, end - 1, 'R');
-        }
         start = end;
     }
 
