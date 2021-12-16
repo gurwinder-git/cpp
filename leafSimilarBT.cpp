@@ -24,6 +24,7 @@ int main()
     root1->left->right = new TreeNode(3);
     root1->right->left = new TreeNode(5);
     root1->right->right = new TreeNode(7);
+
     TreeNode *root2 = new TreeNode(4);
     root2->left = new TreeNode(2);
     root2->right = new TreeNode(6);
