@@ -1,5 +1,6 @@
 #include <iostream>
-#include <queue>
+#include <vector>
+#include <algorithm>
 using namespace std;
 
 struct TreeNode
@@ -12,55 +13,46 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-bool isSymmetric3(TreeNode *root);
+class Solution
+{
+public:
+    int ans;
+
+    int height(TreeNode *currRoot)
+    {
+        if (currRoot == NULL)
+            return 0;
+
+        int lHeight = height(currRoot->left);
+        int rHeight = height(currRoot->right);
+
+        ans = max(ans, lHeight + rHeight);
+
+        return 1 + max(lHeight, rHeight);
+    }
+    int diameterOfBinaryTree(TreeNode *root)
+    {
+        this->ans = 0;
+        this->height(root);
+        return ans;
+    }
+};
 
 int main()
 {
 
     TreeNode *root = new TreeNode(3);
     (*root).left = new TreeNode(4);
-    (*root).right = new TreeNode(4);
-    root->left->left = new TreeNode(5);
-    root->left->right = new TreeNode(6);
-    root->right->left = new TreeNode(6);
-    root->right->right = new TreeNode(5);
+    (*root).right = new TreeNode(5);
 
-    bool res = isSymmetric3(root);
+    root->left->left = new TreeNode(6);
+    root->left->right = new TreeNode(7);
 
-    cout << res;
+    root->right->left = new TreeNode(8);
+    root->right->right = new TreeNode(9);
+
+    Solution sol;
+    cout << sol.diameterOfBinaryTree(root);
 
     return 0;
-}
-bool isSymmetric3(TreeNode *root)
-{
-    if (!root)
-        return true;
-
-    queue<TreeNode *> nodeAddress({root->right, root->left});
-
-    TreeNode *l, *r;
-    while (!nodeAddress.empty())
-    {
-        r = nodeAddress.front();
-        nodeAddress.pop();
-        l = nodeAddress.front();
-        nodeAddress.pop();
-
-        //   0 && 1 || 1 && 0
-        //   1 && 0 || 0 && 1
-        if (!r && l || r && !l)
-            return false;
-
-        if (r && l)
-        {
-            if (r->val != l->val)
-                return false;
-
-            nodeAddress.push(r->right);
-            nodeAddress.push(l->left);
-            nodeAddress.push(r->left);
-            nodeAddress.push(l->right);
-        }
-    }
-    return true;
 }
