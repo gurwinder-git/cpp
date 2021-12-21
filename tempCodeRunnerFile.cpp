@@ -1,32 +1,19 @@
-olve(TreeNode *root)
-    {
-        if (!root)
-            return;
-        if (root->left != NULL && root->left->left != NULL)
+e (!q.empty())
         {
-            if (root->left->left->val % 2 == 0)
-                this->sum += root->left->left->val;
-        }
-
-        if (root->left != NULL && root->left->right != NULL)
-        {
-            if (root->val % 2 == 0)
+            int qSize = q.size();
+            while (qSize--)
             {
-                this->sum += root->left->right->val;
+                pair<TreeNode *, int> curr = q.front();
+                q.pop();
+
+                if (curr.first->left)
+                    q.push(pair<TreeNode *, int>(curr.first->left, curr.second * 2));
+                if (curr.first->right)
+                    q.push(pair<TreeNode *, int>(curr.first->right, (curr.second * 2) + 1));
+            }
+
+            if (!q.empty())
+            {
+                maxWidth = max(q.back().second - q.front().second + 1, maxWidth);
             }
         }
-
-        if (root->right != NULL && root->right->left != NULL)
-        {
-            if (root->val % 2 == 0)
-                this->sum += root->right->left->val;
-        }
-
-        if (root->right != NULL && root->right->right != NULL)
-        {
-            if (root->val % 2 == 0)
-                this->sum += root->right->right->val;
-        }
-        solve(root->left);
-        solve(root->right);
-    }
