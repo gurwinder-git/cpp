@@ -44,6 +44,8 @@ public:
         solve(root->right, maxDepth);
         maxDepth++;
     }
+
+    // also solved by level order sum
     int deepestLeavesSum(TreeNode *root)
     {
         this->ans = 0;
