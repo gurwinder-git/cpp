@@ -18,9 +18,10 @@ public:
 
         // picking
         dfs(arr, idx + 1, sum + arr[idx]);
+        // not picking
         dfs(arr, idx + 1, sum);
     }
-    vector<int> subsetSums(vector<int> arr, int N)
+    vector<int> subsetSums(vector<int> arr)
     {
         dfs(arr, 0, 0);
         sort(this->res.begin(), this->res.end());
@@ -30,15 +31,14 @@ public:
 
 int main()
 {
-    vector<int> candidates = {3, 2, 1};
+    vector<int> nums = {3, 2, 1};
     Solution sol;
 
-    vector<int> res = sol.subsetSums(candidates, 9);
+    vector<int> res = sol.subsetSums(nums);
 
     cout << "[";
     for (auto i : res)
     {
-
         cout << " " << i << " ";
     }
     cout << "]";
