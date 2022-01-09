@@ -47,7 +47,8 @@ public:
 
 int main()
 {
-    vector<int> num = {3, 1, 2, 7, 4, 3};
+    // vector<int> num = {3, 1, 7, 5, 4, 2, 1};
+    vector<int> num = {3, 2, 1};
 
     Solution sol;
 
