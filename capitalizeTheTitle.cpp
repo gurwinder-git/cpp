@@ -33,7 +33,7 @@ public:
     string capitalizeTitle(string title)
     {
         int start = 0;
-        int end = 1;
+        int end = 0;
 
         for (end; end < title.length(); end++)
         {
@@ -52,7 +52,7 @@ public:
 int main()
 {
 
-    string title = "capiTalIze tHe titLe";
+    string title = "capiTalIze tHe titLe GuRWinDEr SIngH";
 
     Solution sol;
 
