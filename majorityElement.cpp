@@ -4,32 +4,67 @@
 #include <unordered_map>
 using namespace std;
 
-vector<int> majorityElements(vector<int> &nums);
+class Solution
+{
+public:
+    // O(n) space complexity
+
+    //  int majorityElement(vector<int> &nums)
+    //  {
+    //      int ans;
+    //      unordered_map<int, int> mp;
+
+    //     for (int i : nums)
+    //     {
+    //         mp[i]++;
+    //     }
+    //     int size = nums.size() / 2;
+
+    //     for (pair<int, int> p : mp)
+    //     {
+    //         if (p.second > size)
+    //         {
+    //             ans = p.first;
+    //         }
+    //     }
+
+    //     return ans;
+    // }
+
+    // O(1) space complexity
+
+    int majorityElement(vector<int> &nums)
+    {
+        int val = nums.at(0);
+        int totalElementsWhichAreNotPair = 1;
+
+        for (int i = 1; i < nums.size(); i++)
+        {
+            if (totalElementsWhichAreNotPair == 0)
+            {
+                val = nums[i];
+                totalElementsWhichAreNotPair = 1;
+            }
+            else if (val != nums[i])
+            {
+                totalElementsWhichAreNotPair--;
+            }
+            else
+            {
+                totalElementsWhichAreNotPair++;
+            }
+        }
+
+        return val;
+    }
+};
+
 int main()
 {
-    vector<int> nums = {1, 3};
-    nums = majorityElements(nums);
-    for (int num : nums)
-        cout << num << "  ";
+    vector<int> nums = {2, 2, 1, 1, 1, 2, 2};
+    Solution sol;
+
+    cout << sol.majorityElement(nums);
 
     return 0;
-}
-
-vector<int> majorityElements(vector<int> &nums)
-{
-    unordered_map<int, int> frequencyOfElements;
-    vector<int> res;
-
-    int k = nums.size() / 3;
-
-    for (int num : nums)
-        frequencyOfElements[num]++;
-
-    for (pair<int, int> obj : frequencyOfElements)
-    {
-        if (obj.second > k)
-            res.push_back(obj.first);
-    }
-
-    return res;
 }
