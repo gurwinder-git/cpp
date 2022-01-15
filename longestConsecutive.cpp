@@ -59,9 +59,9 @@ int longestConsecutive(vector<int> &nums)
         if (p.second == true)
         {
             int length = 1;
-            int consicutive = p.first;
+            int consecutive = p.first;
 
-            while (helperMap.find(consicutive + length) != helperMap.end())
+            while (helperMap.find(consecutive + length) != helperMap.end())
                 length++;
 
             ans = max(ans, length);
