@@ -1,36 +1,72 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <unordered_map>
 using namespace std;
 
 int longestConsecutive(vector<int> &nums);
 int main()
 {
-    vector<int> nums = {0, 3, 7, 2, 5, 8, 4, 6, 0, 1};
+    vector<int> nums = {5, 4, 2, 1};
     cout << longestConsecutive(nums);
     return 0;
 }
+
+// brute force O(nlogn)
+//  int longestConsecutive(vector<int> &nums)
+//  {
+//      if (nums.size() == 0)
+//          return 0;
+
+//     sort(nums.begin(), nums.end());
+
+//     int maxlenght = 1;
+//     int curruntMaxLenght = 1;
+//     for (int i = 1; i < nums.size(); i++)
+//     {
+//         if (nums[i] == nums[i - 1])
+//             continue;
+
+//         if ((nums[i] - 1) == nums[i - 1])
+//             curruntMaxLenght++;
+//         else
+//         {
+//             maxlenght = max(maxlenght, curruntMaxLenght);
+//             curruntMaxLenght = 1;
+//         }
+//     }
+//     return max(maxlenght, curruntMaxLenght);
+// }
+
+// optimal O(n)
 int longestConsecutive(vector<int> &nums)
 {
-    if (nums.size() == 0)
-        return 0;
+    unordered_map<int, bool> helperMap;
 
-    sort(nums.begin(), nums.end());
+    for (int num : nums)
+        helperMap.insert({num, true});
 
-    int maxlenght = 1;
-    int curruntMaxLenght = 1;
-    for (int i = 1; i < nums.size(); i++)
+    for (int num : nums)
     {
-        if (nums[i] == nums[i - 1])
-            continue;
+        if (helperMap.find(num - 1) != helperMap.end())
+            helperMap[num] = false;
+    }
 
-        if ((nums[i] - 1) == nums[i - 1])
-            curruntMaxLenght++;
-        else
+    int ans = 0;
+
+    for (pair<int, bool> p : helperMap)
+    {
+        if (p.second == true)
         {
-            maxlenght = max(maxlenght, curruntMaxLenght);
-            curruntMaxLenght = 1;
+            int length = 1;
+            int consicutive = p.first;
+
+            while (helperMap.find(consicutive + length) != helperMap.end())
+                length++;
+
+            ans = max(ans, length);
         }
     }
-    return max(maxlenght, curruntMaxLenght);
+
+    return ans;
 }
