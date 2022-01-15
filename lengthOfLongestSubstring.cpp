@@ -1,12 +1,11 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include <algorithm>
-#include <iterator>
+#include <unordered_map>
+
 using namespace std;
 
 int lengthOfLongestSubstring(string s);
-int findIndex(vector<char> &vec, char c);
 int main()
 {
     int l = lengthOfLongestSubstring("abcabcabaadef");
@@ -14,38 +13,87 @@ int main()
     return 0;
 }
 
+// optimal
 int lengthOfLongestSubstring(string s)
 {
-    vector<char> distinctString;
-    int maxLength = 0;
+    if (s.length() == 0)
+        return 0;
+    unordered_map<char, int> mp;
+    int i = -1;
+    int j = -1;
+    int ans = 1;
 
-    for (int i = 0; i < s.length(); i++)
+    int size = s.length();
+
+    while (true)
     {
-        //if char not exit in vector
-        if (count(distinctString.begin(), distinctString.end(), s[i]) == 0)
-        {
-            distinctString.push_back(s[i]);
-        }
-        //if char exit in vector
-        else
-        {
-            if (distinctString.size() > maxLength)
-                maxLength = distinctString.size();
+        bool f1 = false;
+        bool f2 = false;
 
-            //then find the index of that chacracter
-            int index = findIndex(distinctString, s[i]);
-            distinctString.erase(distinctString.begin(), distinctString.begin() + (index + 1));
-            distinctString.push_back(s[i]);
+        while (i < size - 1)
+        {
+            f1 = true;
+            i++;
+            mp[s[i]]++;
+
+            if (mp[s[i]] == 2)
+            {
+                break;
+            }
+            ans = max(ans, i - j);
         }
+
+        while (j < size - 1)
+        {
+            f2 = true;
+            j++;
+            mp[s[j]]--;
+
+            if (mp[s[i]] == 1)
+            {
+                break;
+            }
+        }
+
+        if (f1 == false && f2 == false)
+            break;
     }
-    if (distinctString.size() > maxLength)
-        maxLength = distinctString.size();
 
-    return maxLength;
+    return ans;
 }
 
-int findIndex(vector<char> &vec, char c)
-{
-    std::vector<char>::iterator itr = std::find(vec.begin(), vec.end(), c);
-    return std::distance(vec.begin(), itr);
-}
+// O(n^3) brute force
+// int lengthOfLongestSubstring(string s)
+// {
+//     if (s.length() == 0)
+//         return 0;
+//     int maxLenght = 1;
+//     for (int i = 0; i < s.length(); i++)
+//     {
+//         int j = i + 1;
+
+//         while (j < s.length())
+//         {
+//             int k = i;
+
+//             while (k < j)
+//             {
+//                 if (s[j] == s[k])
+//                     break;
+//                 k++;
+//             }
+
+//             if (k == j)
+//             {
+//                 maxLenght = max(maxLenght, j - i + 1);
+//                 j++;
+//             }
+//             else
+//             {
+//                 break;
+//             }
+//         }
+//     }
+
+//     return maxLenght;
+// }
