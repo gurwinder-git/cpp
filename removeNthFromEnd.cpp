@@ -44,47 +44,70 @@ int main()
     return 0;
 }
 
+// optimal
 struct node *removeNthFromEnd(struct node *head, int n)
 {
-    if (head == NULL)
+    struct node *slow = head, *fast = head;
+
+    for (int i = 0; i < n; i++)
     {
-        return head;
+        fast = fast->next;
     }
 
-    struct node *head_ptr = head;
-    int total_nodes = 0;
+    if (!fast)
+        return head->next;
 
-    while (head_ptr)
+    while (fast->next)
     {
-        total_nodes++;
-        head_ptr = (*head_ptr).next;
+        fast = fast->next;
+        slow = slow->next;
     }
 
-    int nthNodeFromStart = (total_nodes - n) + 1;
-
-    if (nthNodeFromStart == 1)
-    {
-        struct node *second_node_ptr = head->next;
-        free(head);
-        return second_node_ptr;
-    }
-
-    if (nthNodeFromStart > 1 && nthNodeFromStart <= total_nodes)
-    {
-        struct node *previous, *current;
-        previous = current = head;
-
-        while (nthNodeFromStart != 1)
-        {
-            previous = current;
-            current = (*current).next;
-
-            nthNodeFromStart--;
-        }
-
-        (*previous).next = (*current).next;
-        free(current);
-        return head;
-    }
+    slow->next = slow->next->next;
     return head;
 }
+
+// struct node *removeNthFromEnd(struct node *head, int n)
+// {
+//     if (head == NULL)
+//     {
+//         return head;
+//     }
+
+//     struct node *head_ptr = head;
+//     int total_nodes = 0;
+
+//     while (head_ptr)
+//     {
+//         total_nodes++;
+//         head_ptr = (*head_ptr).next;
+//     }
+
+//     int nthNodeFromStart = (total_nodes - n) + 1;
+
+//     if (nthNodeFromStart == 1)
+//     {
+//         struct node *second_node_ptr = head->next;
+//         free(head);
+//         return second_node_ptr;
+//     }
+
+//     if (nthNodeFromStart > 1 && nthNodeFromStart <= total_nodes)
+//     {
+//         struct node *previous, *current;
+//         previous = current = head;
+
+//         while (nthNodeFromStart != 1)
+//         {
+//             previous = current;
+//             current = (*current).next;
+
+//             nthNodeFromStart--;
+//         }
+
+//         (*previous).next = (*current).next;
+//         free(current);
+//         return head;
+//     }
+//     return head;
+// }
