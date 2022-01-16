@@ -2,51 +2,95 @@
 #include <stack>
 using namespace std;
 
-class node
+class ListNode
 {
 public:
-    int data;
-    node *next;
+    int val;
+    ListNode *next;
 
-    node(int data)
+    ListNode(int val)
     {
-        this->data = data;
+        this->val = val;
         this->next = NULL;
-    }
-
-    static bool isPalindrome(node *head)
-    {
-        stack<node *> stk;
-        node *tempHead = head;
-
-        while (tempHead)
-        {
-            stk.push(tempHead);
-            tempHead = tempHead->next;
-        }
-
-        int mid = stk.size() / 2;
-
-        while (mid--)
-        {
-            if (head->data != stk.top()->data)
-                return false;
-            head = head->next;
-            stk.pop();
-        }
-
-        return true;
     }
 };
 
+class Solution
+{
+public:
+    ListNode *reverseList(ListNode *head)
+    {
+        ListNode *pre = NULL, *next = head;
+
+        while (head)
+        {
+            next = head->next;
+
+            head->next = pre;
+            pre = head;
+            head = next;
+        }
+
+        return pre;
+    }
+    bool isPalindrome(ListNode *head)
+    {
+
+        ListNode *slow = head, *fast = head;
+
+        while (fast && fast->next)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+
+        ListNode *head2 = this->reverseList(slow);
+
+        while (head && head2)
+        {
+            if (head->val != head2->val)
+                return false;
+            head = head->next;
+            head2 = head2->next;
+        }
+        return true;
+    }
+
+    // O(n) space
+    //   bool isPalindrome(ListNode *head)
+    //  {
+    //      stack<ListNode *> stk;
+    //      ListNode *tempHead = head;
+
+    //     while (tempHead)
+    //     {
+    //         stk.push(tempHead);
+    //         tempHead = tempHead->next;
+    //     }
+
+    //     int mid = stk.size() / 2;
+
+    //     while (mid--)
+    //     {
+    //         if (head->val != stk.top()->val)
+    //             return false;
+    //         head = head->next;
+    //         stk.pop();
+    //     }
+
+    //     return true;
+    // }
+
+    // O(1) space
+};
 int main()
 {
-    node *head = new node(1);
-    head->next = new node(2);
-    head->next->next = new node(2);
-    head->next->next->next = new node(1);
-
-    cout << node::isPalindrome(head);
+    ListNode *head = new ListNode(1);
+    head->next = new ListNode(2);
+    head->next->next = new ListNode(1);
+    head->next->next->next = new ListNode(1);
+    Solution sol;
+    cout << sol.isPalindrome(head);
 
     return 0;
 }

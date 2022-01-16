@@ -1,1 +1,2 @@
-releasePointer + 1
+
+    // head->next->next->next = new ListNode(1);
