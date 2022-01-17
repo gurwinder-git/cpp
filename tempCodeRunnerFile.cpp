@@ -1,2 +1,5 @@
-
-    // head->next->next->next = new ListNode(1);
+  if (deepCloneHead == head)
+        {
+            cout << "wrong output";
+            break;
+        }
