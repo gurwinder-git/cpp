@@ -32,7 +32,7 @@ int main()
     n4.next = &n5;
     struct node *head = &n4;
 
-    struct node *result = rotateRight(head, 999999999);
+    struct node *result = rotateRight(head, 2);
     while (result)
     {
         cout << result->data << "  ";
@@ -42,40 +42,75 @@ int main()
     return 0;
 }
 
-struct node *rotateRight(struct node *head, int k)
+// optimal
+node *rotateRight(node *head, int k)
 {
-    if (head == NULL || head->next == NULL || k == 0)
-    {
+    if (head == NULL)
         return head;
-    }
+    int lenght = 1;
 
-    struct node *previous = head;
-    struct node *tail = head;
+    node *tail = head;
 
-    //finding length of list
-    int len = 0;
-    struct node *temp_head = head;
-    while (temp_head != NULL)
+    while (tail->next)
     {
-        len++;
-        temp_head = temp_head->next;
+        lenght++;
+        tail = tail->next;
     }
 
-    k = k % len;
+    k = k % lenght;
+    if (k == 0)
+        return head;
 
-    while (k > 0)
+    node *newHead = head;
+    node *newTail = NULL;
+    while (lenght > k)
     {
-        while (tail->next != NULL)
-        {
-            previous = tail;
-            tail = tail->next;
-        }
+        newTail = newHead;
+        newHead = newHead->next;
 
-        tail->next = head;
-        previous->next = NULL;
-        head = tail;
-        previous = head;
-        k--;
+        lenght--;
     }
-    return head;
+
+    newTail->next = NULL;
+    tail->next = head;
+    return newHead;
 }
+
+// brute force
+//  struct node *rotateRight(struct node *head, int k)
+//  {
+//      if (head == NULL || head->next == NULL || k == 0)
+//      {
+//          return head;
+//      }
+
+//     struct node *previous = head;
+//     struct node *tail = head;
+
+//     //finding length of list
+//     int len = 0;
+//     struct node *temp_head = head;
+//     while (temp_head != NULL)
+//     {
+//         len++;
+//         temp_head = temp_head->next;
+//     }
+
+//     k = k % len;
+
+//     while (k > 0)
+//     {
+//         while (tail->next != NULL)
+//         {
+//             previous = tail;
+//             tail = tail->next;
+//         }
+
+//         tail->next = head;
+//         previous->next = NULL;
+//         head = tail;
+//         previous = head;
+//         k--;
+//     }
+//     return head;
+// }
