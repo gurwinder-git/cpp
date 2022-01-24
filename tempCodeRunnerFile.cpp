@@ -1,4 +1,2 @@
-"[ ";
-    // for (int i : ans)
-    //     cout << i << " ";
-    // cout << "]";
+);
+    cout << minStk.getMin() << endl;
