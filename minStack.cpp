@@ -5,42 +5,94 @@
 
 using namespace std;
 
+// O(n) extra space
+// class MinStack
+// {
+// public:
+//     stack<int> minStk;
+//     stack<int> stk;
+
+//     MinStack()
+//     {
+//         minStk.push(INT_MAX);
+//     }
+
+//     void push(int val)
+//     {
+//         stk.push(val);
+//         if (val <= minStk.top())
+//             minStk.push(val);
+//     }
+
+//     void pop()
+//     {
+//         if (minStk.top() == stk.top())
+//             minStk.pop();
+
+//         stk.pop();
+//     }
+
+//     int top()
+//     {
+//         return stk.top();
+//     }
+
+//     int getMin()
+//     {
+//         return minStk.top();
+//     }
+// };
+
+// O(1) extra space
 class MinStack
 {
 public:
-    stack<int> minStk;
-    stack<int> stk;
-
-    MinStack()
-    {
-        minStk.push(INT_MAX);
-    }
+    long minVal;
+    stack<long> stk;
 
     void push(int val)
     {
-        stk.push(val);
-        if (val <= minStk.top())
-            minStk.push(val);
+        if (stk.empty())
+        {
+            stk.push(val);
+            minVal = val;
+        }
+        else if (val < minVal)
+        {
+            long v = val;
+            long fakeVal = v + (v - minVal);
+            stk.push(fakeVal);
+            minVal = val;
+        }
+        else
+        {
+            stk.push(val);
+        }
     }
 
     void pop()
     {
-        if (minStk.top() == stk.top())
-            minStk.pop();
-
+        if (stk.top() < minVal)
+        {
+            minVal = (2 * minVal) - stk.top();
+        }
         stk.pop();
     }
 
     int top()
     {
-        return stk.top();
+        if (stk.top() >= minVal)
+            return stk.top();
+        else
+            return minVal;
     }
 
     int getMin()
     {
-        return minStk.top();
+        return minVal;
     }
 };
+
 int main()
 {
     MinStack minStk;
