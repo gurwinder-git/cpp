@@ -50,14 +50,14 @@ public:
     long minVal;
     stack<long> stk;
 
+    MinStack()
+    {
+        minVal = INT_MAX;
+    }
+
     void push(int val)
     {
-        if (stk.empty())
-        {
-            stk.push(val);
-            minVal = val;
-        }
-        else if (val < minVal)
+        if (val < minVal)
         {
             long v = val;
             long fakeVal = v + (v - minVal);
