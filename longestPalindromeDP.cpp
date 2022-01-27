@@ -12,6 +12,8 @@ int main()
     cout << LP(s);
     return 0;
 }
+
+// only suitable for lenght of longest palindrom
 string LP(string s)
 {
     vector<vector<bool>> dp(s.length(), vector<bool>(s.length()));
