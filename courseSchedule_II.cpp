@@ -14,9 +14,7 @@ public:
         for (int i = 0; i < adj[src].size(); i++)
         {
             if (visited[adj[src][i]] == false)
-            {
                 topoSort_(adj, adj[src][i], visited);
-            }
         }
         ans.push_back(src);
     }
@@ -28,15 +26,12 @@ public:
         {
             if (visited[i] == false)
             {
+
                 if (findCycle(i, adj, visited, explored))
-                {
                     return true;
-                }
             }
             else if (explored[i] == false)
-            {
                 return true;
-            }
         }
 
         explored[src] = true;
@@ -65,13 +60,11 @@ public:
             visited[i] = false;
 
         for (int i = 0; i < numCourses; i++)
-        {
             if (visited[i] == false)
             {
                 visited[i] = true;
                 topoSort_(adj, i, visited);
             }
-        }
 
         return ans;
     }
