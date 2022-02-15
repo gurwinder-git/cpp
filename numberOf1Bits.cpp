@@ -1,25 +1,26 @@
-#include<iostream>
+#include <iostream>
 
 using namespace std;
 
-class Solution {
+class Solution
+{
 public:
     // int hammingWeight(uint32_t n) {
-        
+
     //     int totalOnes = 0;
-        
+
     //     while (n)
     //     {
     //         totalOnes += n % 2;
     //         n = n >> 1;
     //     }
-        
+
     //     return totalOnes;
     // }
 
-    //using masking
-    // int hammingWeight(uint32_t n) {
-        
+    // using masking
+    //  int hammingWeight(uint32_t n) {
+
     //     uint32_t mask = 1;
 
     //     int i = 0;
@@ -31,22 +32,22 @@ public:
     //         mask = mask << 1;
     //         i++;
     //     }
-    //     return totalOnes;  
+    //     return totalOnes;
     // }
 
-    //optimal
-    int hammingWeight(uint32_t n) {
-         
-        int totalOnes = 0; 
+    // optimal
+    int hammingWeight(uint32_t n)
+    {
+
+        int totalOnes = 0;
         while (n != 0)
         {
-            n = n & (n-1);
+            n = n & (n - 1);
             totalOnes++;
         }
-        
-        return totalOnes;  
-    }
 
+        return totalOnes;
+    }
 };
 
 int main()
@@ -54,6 +55,6 @@ int main()
 
     uint32_t n = 11;
     Solution sol;
-    cout<< sol.hammingWeight(n);
+    cout << sol.hammingWeight(n);
     return 0;
 }
