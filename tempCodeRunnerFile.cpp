@@ -1,2 +1,5 @@
-if (node->subEmployeeNode.size() <= 0)
-        //     return {node->value, 1};
+  // for (auto v : intervals)
+        // {
+        //     cout << v[0] << ", " << v[1];
+        //     cout << endl;
+        // }
