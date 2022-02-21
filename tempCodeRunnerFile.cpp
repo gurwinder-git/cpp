@@ -1,2 +1,4 @@
-] << ", ";
-    cout << res[1];
+if (start >= nums.size())
+        {
+            return;
+        }
