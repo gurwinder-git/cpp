@@ -31,77 +31,87 @@ class Solution
 {
 public:
     // optimal
-    unordered_map<Node *, Node *> oldVsNew;
-    Node *cloneGraph(Node *node)
-    {
-        if (!node)
-            return NULL;
-
-        // if not mapped
-        if (oldVsNew.find(node) == oldVsNew.end())
-        {
-            Node *newNode = new Node(node->val);
-            oldVsNew[node] = newNode;
-
-            for (Node *&neighbor : node->neighbors)
-            {
-                newNode->neighbors.push_back(cloneGraph(neighbor));
-            }
-        }
-
-        return oldVsNew[node];
-    }
-
-    // my brutte force
-    //  unordered_map<Node *, bool> visited;
-    //  unordered_map<Node *, Node *> copies;
-
-    // void markCopies(Node *node)
-    // {
-    //     visited[node] = true;
-
-    //     copies[node] = new Node(node->val);
-    //     for (Node *&n : node->neighbors)
-    //     {
-    //         if (visited.find(n) == visited.end())
-    //             markCopies(n);
-    //     }
-    // }
-
+    // unordered_map<Node *, Node *> oldVsNew;
     // Node *cloneGraph(Node *node)
     // {
-    //     if (node == NULL)
-    //         return node;
+    //     if (!node)
+    //         return NULL;
 
-    //     markCopies(node);
-
-    //     queue<Node *> q;
-    //     q.push(node);
-    //     visited[node] = false;
-
-    //     while (!q.empty())
+    //     // if not mapped
+    //     if (oldVsNew.find(node) == oldVsNew.end())
     //     {
-    //         Node *curr = q.front();
-    //         q.pop();
-    //         Node *replicateOfCurrNode = copies[curr];
+    //         Node *newNode = new Node(node->val);
+    //         oldVsNew[node] = newNode;
 
-    //         for (Node *&n : curr->neighbors)
+    //         for (Node *&neighbor : node->neighbors)
     //         {
-    //             Node *replicateOfneighbor = copies[n];
-    //             replicateOfCurrNode->neighbors.push_back(replicateOfneighbor);
-
-    //             if (visited[n] == true)
-    //             {
-    //                 visited[n] = false;
-    //                 q.push(n);
-    //             }
+    //             newNode->neighbors.push_back(cloneGraph(neighbor));
     //         }
     //     }
 
-    //     return copies[node];
+    //     return oldVsNew[node];
     // }
+
+    // my brutte force
+    unordered_map<Node *, bool> visited;
+    unordered_map<Node *, Node *> copies;
+
+    void markCopies(Node *node)
+    {
+        visited[node] = true;
+
+        copies[node] = new Node(node->val);
+        for (Node *&n : node->neighbors)
+        {
+            if (visited.find(n) == visited.end())
+                markCopies(n);
+        }
+    }
+
+    Node *cloneGraph(Node *node)
+    {
+        if (node == NULL)
+            return node;
+
+        markCopies(node);
+
+        queue<Node *> q;
+        q.push(node);
+        visited[node] = false;
+
+        while (!q.empty())
+        {
+            Node *curr = q.front();
+            q.pop();
+            Node *replicateOfCurrNode = copies[curr];
+
+            for (Node *&n : curr->neighbors)
+            {
+                Node *replicateOfneighbor = copies[n];
+                replicateOfCurrNode->neighbors.push_back(replicateOfneighbor);
+
+                if (visited[n] == true)
+                {
+                    visited[n] = false;
+                    q.push(n);
+                }
+            }
+        }
+
+        return copies[node];
+    }
 };
 
+void dfs(Node *node, unordered_map<Node *, bool> &visisted)
+{
+    cout << node->val << "  ";
+    visisted[node] = true;
+    for (Node *n : node->neighbors)
+    {
+        if (visisted.find(n) == visisted.end())
+            dfs(n, visisted);
+    }
+}
 int main()
 {
     Node *node = new Node(1);
@@ -133,9 +143,14 @@ int main()
     node->neighbors[0]->neighbors[1]->neighbors.push_back(node->neighbors[0]);
     node->neighbors[0]->neighbors[1]->neighbors.push_back(node->neighbors[1]);
 
+    unordered_map<Node *, bool> visisted;
     Solution sol;
 
     Node *clone = sol.cloneGraph(node);
+    dfs(node, visisted);
+    cout << endl
+         << "-----------" << endl;
+    dfs(clone, visisted);
 
     return 0;
 }
