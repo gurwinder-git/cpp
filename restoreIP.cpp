@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
 using namespace std;
 
 class Solution
@@ -30,6 +29,8 @@ public:
             res.push_back(curr);
             return;
         }
+        if (part >= 4)
+            return;
 
         if (isValidPart(s, start, 1))
             solve(s, start + 1, curr + s.at(start) + '.', part + 1);
