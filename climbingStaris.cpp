@@ -30,7 +30,6 @@ int solve(int level, int n, unordered_map<int, int> &memo)
 
     return memo[level];
 }
-
 int climb(int n)
 {
     unordered_map<int, int> memo;

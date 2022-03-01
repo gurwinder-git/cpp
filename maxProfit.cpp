@@ -10,6 +10,7 @@ int main()
     cout << maxProfit(prices);
     return 0;
 }
+
 int maxProfit(vector<int> &prices)
 {
     int maxProfit = 0;
