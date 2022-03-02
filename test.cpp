@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -32,14 +33,25 @@ int &test(int &a)
     return a;
 }
 
+vector<int> testObj()
+{
+    vector<int> res({2, 45, 6});
+    cout << &res << endl;
+
+    return res;
+}
 int main()
 {
+
+    vector<int> ans = testObj();
+
+    cout << &ans;
 
     int a = 6;
     int &d = test(a); // bad practice
     d = 0;
-    cout << a << endl;
-    cout << d << endl;
+    // cout << a << endl;
+    // cout << d << endl;
     basic b(2, 12, 13);
     // int &getData = b.getData();
 
