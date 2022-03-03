@@ -3,3 +3,5 @@
 /arrayWithFunctions.exe
 /classesInCpp.cpp
 /classesInCpp.exe
+*.exe
+!spec/*.exe
