@@ -6,6 +6,9 @@
     "string": "cpp",
     "ostream": "cpp",
     "iostream": "cpp",
-    "unordered_map": "cpp"
-  }
+    "unordered_map": "cpp",
+    "initializer_list": "cpp",
+    "utility": "cpp"
+  },
+  "C_Cpp.intelliSenseEngineFallback": "Enabled"
 }

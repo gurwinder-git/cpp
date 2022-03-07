@@ -45,7 +45,7 @@ int main()
 
     vector<int> ans = testObj();
 
-    cout << &ans;
+    // cout << &ans;
 
     int a = 6;
     int &d = test(a); // bad practice
@@ -66,6 +66,14 @@ int main()
     // cout << b.p.second << endl;
     // cout << res.first << endl;
     // cout << res.second;
+
+    vector<vector<int>> nums = {{1, 2, 3, 4, 5, 6, 7}, {8, 9, 10, 11, 12, 13, 14}};
+
+    vector<int> temp = nums[0];
+    nums[0] = nums[1];
+    nums[1] = temp;
+
+    cout << nums[0][0];
 
     return 0;
 }
