@@ -6,6 +6,7 @@ using namespace std;
 class Solution
 {
 public:
+    // pick non-pick like problem so time complextity is O(2^totalChars(s))
     void dfs(string &s, int idx, vector<string> &ans)
     {
         if (idx >= s.length())
