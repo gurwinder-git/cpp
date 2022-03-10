@@ -1,21 +1,17 @@
-int maxSubArray(vector<int> &nums)
-{
-    int currentSum = nums[0];
-    int maxSum = nums[0];
+s Solution
+// {
+// public:
+//     void solve(string &s, int idx, vector<string> &container, vector<vector<string>> &res)
+//     {
 
-    for (int i = 1; i < nums.size(); i++)
-    {
-        if (currentSum >= 0) // then join that subArray
-        {
-            currentSum += nums[i];
-        }
-        else
-        {
-            currentSum = nums[i];
-        }
+//         // partitioning
 
-        maxSum = max(maxSum, currentSum);
-    }
+//         for (int i = idx; i < s.length(); i++)
+//         {
+//         }
+//     }
 
-    return maxSum;
-}
+//     vector<vector<string>> partition(string s)
+//     {
+//     }
+// };
