@@ -8,7 +8,9 @@
     "iostream": "cpp",
     "unordered_map": "cpp",
     "initializer_list": "cpp",
-    "utility": "cpp"
+    "utility": "cpp",
+    "random": "cpp",
+    "limits": "cpp"
   },
   "C_Cpp.intelliSenseEngineFallback": "Enabled"
 }
