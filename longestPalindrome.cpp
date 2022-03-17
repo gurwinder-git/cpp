@@ -64,7 +64,7 @@ string longestPalindrome(string s)
     return res;
 }
 
-// NOT GOOD SOLUTION HARD TO UNDERSTAND
+// NOT GOOD SOLUTION HARD TO UNDERSTAND my early stage
 //  string longestPalindrome(string s)
 //  {
 //      string resultString = {s[0]};
