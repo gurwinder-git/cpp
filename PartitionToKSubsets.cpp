@@ -47,8 +47,8 @@ public:
 int main()
 {
 
-    vector<int> nums = {4, 3, 2, 3, 5, 2, 1};
-    int k = 4;
+    vector<int> nums = {1, 2, 3, 4};
+    int k = 3;
 
     Solution sol;
     vector<vector<vector<int>>> ans = sol.partitionKSubsets(nums, k);
